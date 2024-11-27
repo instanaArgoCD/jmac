@@ -181,9 +181,9 @@ cluster:
 # The chart will try to auto-detect if the cluster is OpenShift, so you will likely not even need to set this explicitly.
 openshift: true
 
-# rbac:
+rbac:
   # Specifies whether RBAC resources should be created
-  # create: true
+  create: true
 
 # opentelemetry:
   # enabled: false # legacy setting, will only enable grpc, defaults to false
@@ -217,33 +217,33 @@ zone:
   # zone.name is the custom zone that detected technologies will be assigned to
   name: 'Original_Zone_From_Values.YAML'
 
-# k8s_sensor:
-#   image:
+k8s_sensor:
+  image:
     # k8s_sensor.image.name is the name of the container image of the Instana agent.
-    # name: icr.io/instana/k8sensor
+    name: icr.io/instana/k8sensor
     # k8s_sensor.image.digest is the digest (a.k.a. Image ID) of the agent container image; if specified, it has priority over agent.image.tag, which will be ignored.
     #digest:
     # k8s_sensor.image.tag is the tag name of the agent container image; if agent.image.digest is specified, this property is ignored.
-    # tag: latest
+    tag: latest
     # k8s_sensor.image.pullPolicy specifies when to pull the image container.
-    # pullPolicy: Always
-  # deployment:
+    pullPolicy: Always
+  deployment:
     # Specifies whether or not to enable the Deployment and turn off the Kubernetes sensor in the DaemonSet
-    # enabled: true
+    enabled: true
     # Use three replicas to ensure the HA by the default.
-    # replicas: 3
+    replicas: 3
     # k8s_sensor.deployment.pod adjusts the resource assignments for the agent independently of the DaemonSet agent when k8s_sensor.deployment.enabled=true
-    # pod:
-      # requests:
+    pod:
+      requests:
         # k8s_sensor.deployment.pod.requests.memory is the requested memory allocation in MiB for the agent pods.
-        # memory: 128Mi
+        memory: 128Mi
         # k8s_sensor.deployment.pod.requests.cpu are the requested CPU units allocation for the agent pods.
-        # cpu: 120m
-      # limits:
+        cpu: 120m
+      limits:
         # k8s_sensor.deployment.pod.limits.memory set the memory allocation limits in MiB for the agent pods.
-        # memory: 2048Mi
+        memory: 2048Mi
         # k8s_sensor.deployment.pod.limits.cpu sets the CPU units allocation limits for the agent pods.
-        # cpu: 500m
+        cpu: 500m
       # affinity:
         # podAntiAffinity:
           # Soft anti-affinity policy: try not to schedule multiple kubernetes-sensor pods on the same node.
